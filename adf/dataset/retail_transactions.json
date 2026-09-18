@@ -1,0 +1,8 @@
+{
+  "name": "ds_retail_transactions",
+  "properties": {
+    "linkedServiceName": {"referenceName": "ls_postgresql", "type": "LinkedServiceReference"},
+    "type": "AzurePostgreSqlTable",
+    "typeProperties": {"schema": "analytics", "table": "retail_transactions"}
+  }
+}

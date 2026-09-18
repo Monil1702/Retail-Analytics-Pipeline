@@ -1,0 +1,10 @@
+{
+  "name": "ls_postgresql",
+  "properties": {
+    "type": "AzurePostgreSql",
+    "typeProperties": {
+      "connectionString": "Host=<host>;Port=5432;Database=retail_analytics;UID=retail;EncryptionMethod=1;ValidateServerCertificate=1",
+      "password": {"type": "AzureKeyVaultSecret", "store": {"referenceName": "ls_key_vault", "type": "LinkedServiceReference"}, "secretName": "postgres-password"}
+    }
+  }
+}

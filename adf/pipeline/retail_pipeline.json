@@ -1,0 +1,21 @@
+{
+  "name": "pl_retail_analytics",
+  "properties": {
+    "description": "Orchestrates retail ingestion, Spark transformation, and quality reporting.",
+    "parameters": {"inputPath": {"type": "string", "defaultValue": "landing/retail"}},
+    "activities": [
+      {
+        "name": "Run Spark ETL",
+        "type": "DatabricksSparkPython",
+        "dependsOn": [],
+        "policy": {"timeout": "0.01:00:00", "retry": 2, "retryIntervalInSeconds": 60},
+        "typeProperties": {
+          "pythonFile": "dbfs:/jobs/retail_pipeline/job.py",
+          "parameters": ["--input", "@pipeline().parameters.inputPath"]
+        },
+        "linkedServiceName": {"referenceName": "ls_azure_databricks", "type": "LinkedServiceReference"}
+      }
+    ],
+    "annotations": ["portfolio", "retail", "data-quality"]
+  }
+}
